@@ -1,0 +1,344 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#0078E7"><meta name="author" content="沐源山"><meta name="copyright" content="沐源山"><meta name="generator" content="Hexo 5.3.0"><meta name="theme" content="hexo-theme-yun"><title>数组的方法总结.md | MYS</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/star-markdown-css@0.1.22/dist/yun/yun-markdown.min.css"><script src="//at.alicdn.com/t/font_1140697_ed8vp4atwoj.js" async></script><script src="https://cdn.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>document.addEventListener("DOMContentLoaded", () => {
+  [".post-card",".post-content img"].forEach((target)=> {
+    ScrollReveal().reveal(target);
+  })
+});
+</script><link rel="shortcut icon" type="image/svg+xml" href="/yun.svg"><link rel="mask-icon" href="/yun.svg" color="#0078E7"><link rel="alternate icon" href="/yun.ico"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="preload" href="/js/utils.js" as="script"><link rel="preload" href="/js/hexo-theme-yun.js" as="script"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="stylesheet" href="/css/hexo-theme-yun.css"><script id="yun-config">
+    const Yun = window.Yun || {};
+    window.CONFIG = {"hostname":"muyuanshan.github.io","root":"/","title":"沐源山的小站","version":"1.3.0","mode":"auto","copycode":true,"say":{"api":"https://v1.hitokoto.cn","hitokoto":true},"fireworks":{"colors":["102, 167, 221","62, 131, 225","33, 78, 194"]}};
+  </script><meta name="description" content="在开发的过程会经常的使用到数组的方法，很容易忘记，这篇文章主要是用来加深记忆，系统的梳理出来，在忘记的时候，方便查阅 创建一个数组1. 字面量的方式：这个方式也是我们最常用的一种方式。var a &#x3D; [3, 11, 8] 2. 构造器：var a &#x3D; Array(); &#x2F;&#x2F; [] var a &#x3D; Array(3); &#x2F;&#x2F; [ , , ] 这里之所以是传入一个参数，出来的是3个空，是因为只有一个参数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数组的方法总结.md">
+<meta property="og:url" content="https://muyuanshan.github.io/2021/05/17/%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93-md/index.html">
+<meta property="og:site_name" content="MYS">
+<meta property="og:description" content="在开发的过程会经常的使用到数组的方法，很容易忘记，这篇文章主要是用来加深记忆，系统的梳理出来，在忘记的时候，方便查阅 创建一个数组1. 字面量的方式：这个方式也是我们最常用的一种方式。var a &#x3D; [3, 11, 8] 2. 构造器：var a &#x3D; Array(); &#x2F;&#x2F; [] var a &#x3D; Array(3); &#x2F;&#x2F; [ , , ] 这里之所以是传入一个参数，出来的是3个空，是因为只有一个参数">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-05-17T08:32:12.000Z">
+<meta property="article:modified_time" content="2021-05-17T15:40:31.847Z">
+<meta property="article:author" content="沐源山">
+<meta property="article:tag" content="js">
+<meta name="twitter:card" content="summary"><script src="/js/ui/mode.js"></script></head><body><script defer src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script defer src="/js/ui/fireworks.js"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/js/sidebar.js"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="文章目录"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-list-ordered"></use></svg></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="站点概览"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-passport-line"></use></svg></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="沐源山"><img width="96" loading="lazy" src="/images.jpeg" alt="沐源山"></a><div class="site-author-name"><a href="/about/">沐源山</a></div><a class="site-name" href="/about/site.html">MYS</a><sub class="site-subtitle">永远相信美好的事情即将发生</sub><div class="site-desciption"></div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="首页"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-4-line"></use></svg></span></a><div class="site-state-item"><a href="/archives/" title="归档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-archive-line"></use></svg></span><span class="site-state-item-count">5</span></a></div><div class="site-state-item"><a href="/categories/" title="分类"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-2-line"></use></svg></span><span class="site-state-item-count">1</span></a></div><div class="site-state-item"><a href="/tags/" title="标签"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="site-state-item-count">2</span></a></div><a class="site-state-item hty-icon-button" target="_blank" rel="noopener" href="https://yun.yunyoujun.cn" title="文档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-settings-line"></use></svg></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/muyuanshan" title="GitHub" target="_blank" style="color:#6e5494"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://weibo.com/5618863396/profile?topnav=1&amp;wvr=6" title="微博" target="_blank" style="color:#E6162D"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-weibo-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://music.163.com/#/user/home?id=441238633" title="网易云音乐" target="_blank" style="color:#C20C0C"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-netease-cloud-music-line"></use></svg></a></div><br><a class="links-item hty-icon-button" id="toggle-mode-btn" href="javascript:;" title="Mode" style="color: #f1cb64"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-contrast-2-line"></use></svg></a></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84"><span class="toc-number">1.</span> <span class="toc-text">创建一个数组</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AD%97%E9%9D%A2%E9%87%8F%E7%9A%84%E6%96%B9%E5%BC%8F%EF%BC%9A%E8%BF%99%E4%B8%AA%E6%96%B9%E5%BC%8F%E4%B9%9F%E6%98%AF%E6%88%91%E4%BB%AC%E6%9C%80%E5%B8%B8%E7%94%A8%E7%9A%84%E4%B8%80%E7%A7%8D%E6%96%B9%E5%BC%8F%E3%80%82"><span class="toc-number">1.1.</span> <span class="toc-text">1. 字面量的方式：这个方式也是我们最常用的一种方式。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%9E%84%E9%80%A0%E5%99%A8%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">2. 构造器：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-ES6-Array-of-%E8%BF%94%E5%9B%9E%E7%94%B1%E6%89%80%E6%9C%89%E5%8F%82%E6%95%B0%E5%80%BC%E7%BB%84%E6%88%90%E7%9A%84%E6%95%B0%E7%BB%84"><span class="toc-number">1.3.</span> <span class="toc-text">3. ES6 Array.of() 返回由所有参数值组成的数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-ES6-Array-from-%E5%B0%86%E7%B1%BB%E6%95%B0%E7%BB%84%E8%BD%AC%E6%8D%A2%E4%B8%BA%E7%9C%9F%E6%AD%A3%E7%9A%84%E6%95%B0%E7%BB%84"><span class="toc-number">1.4.</span> <span class="toc-text">4. ES6 Array.from() 将类数组转换为真正的数组</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E4%B8%8A%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">数组上的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%B9%E5%8F%98%E5%8E%9F%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%889%E4%B8%AA%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">改变原数组的方法（9个）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#splice-%E6%B7%BB%E5%8A%A0-%E5%88%A0%E9%99%A4%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="toc-number">2.1.1.</span> <span class="toc-text">splice() 添加&#x2F;删除数组元素</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#sort-%E6%95%B0%E7%BB%84%E6%8E%92%E5%BA%8F"><span class="toc-number">2.1.2.</span> <span class="toc-text">sort() 数组排序</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#pop-%E5%88%A0%E9%99%A4%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%90%8E%E7%9A%84%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0"><span class="toc-number">2.1.3.</span> <span class="toc-text">pop() 删除一个数组中的最后的一个元素</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#shift-%E5%88%A0%E9%99%A4%E6%95%B0%E7%BB%84%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0"><span class="toc-number">2.1.4.</span> <span class="toc-text">shift() 删除数组的第一个元素</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#push-%E5%90%91%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%AB%E5%B0%BE%E6%B7%BB%E5%8A%A0%E5%85%83%E7%B4%A0"><span class="toc-number">2.1.5.</span> <span class="toc-text">push() 向数组的末尾添加元素</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#unshift"><span class="toc-number">2.1.6.</span> <span class="toc-text">unshift()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#reverse-%E9%A2%A0%E5%80%92%E6%95%B0%E7%BB%84%E4%B8%AD%E5%85%83%E7%B4%A0%E7%9A%84%E9%A1%BA%E5%BA%8F"><span class="toc-number">2.1.7.</span> <span class="toc-text">reverse() 颠倒数组中元素的顺序</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ES6-copyWithin-%E6%8C%87%E5%AE%9A%E4%BD%8D%E7%BD%AE%E7%9A%84%E6%88%90%E5%91%98%E5%A4%8D%E5%88%B6%E5%88%B0%E5%85%B6%E4%BB%96%E4%BD%8D%E7%BD%AE"><span class="toc-number">2.1.8.</span> <span class="toc-text">ES6: copyWithin() 指定位置的成员复制到其他位置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ES6-fill-%E5%A1%AB%E5%85%85%E6%95%B0%E7%BB%84"><span class="toc-number">2.1.9.</span> <span class="toc-text">ES6: fill() 填充数组</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8D%E6%94%B9%E5%8F%98%E5%8E%9F%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95-8%E4%B8%AA"><span class="toc-number">2.2.</span> <span class="toc-text">不改变原数组的方法(8个):</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#slice-%E6%B5%85%E6%8B%B7%E8%B4%9D%E6%95%B0%E7%BB%84%E7%9A%84%E5%85%83%E7%B4%A0"><span class="toc-number">2.2.1.</span> <span class="toc-text">slice() 浅拷贝数组的元素</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#join-%E6%95%B0%E7%BB%84%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">2.2.2.</span> <span class="toc-text">join() 数组转字符串</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#toLocaleString-%E6%95%B0%E7%BB%84%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">2.2.3.</span> <span class="toc-text">toLocaleString() 数组转字符串</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#toString-%E6%95%B0%E7%BB%84%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2-%E4%B8%8D%E6%8E%A8%E8%8D%90"><span class="toc-number">2.2.4.</span> <span class="toc-text">toString() 数组转字符串 不推荐</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#cancat"><span class="toc-number">2.2.5.</span> <span class="toc-text">cancat</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#indexOf-%E6%9F%A5%E6%89%BE%E6%95%B0%E7%BB%84%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E6%9F%90%E4%B8%AA%E5%85%83%E7%B4%A0%EF%BC%8C%E8%BF%94%E5%9B%9E%E4%B8%8B%E6%A0%87"><span class="toc-number">2.2.6.</span> <span class="toc-text">indexOf() 查找数组是否存在某个元素，返回下标</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#lastIndexOf-%E6%9F%A5%E6%89%BE%E6%8C%87%E5%AE%9A%E5%85%83%E7%B4%A0%E5%9C%A8%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE"><span class="toc-number">2.2.7.</span> <span class="toc-text">lastIndexOf() 查找指定元素在数组中的最后一个位置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ES7-includes-%E6%9F%A5%E6%89%BE%E6%95%B0%E7%BB%84%E6%98%AF%E5%90%A6%E5%8C%85%E5%90%AB%E6%9F%90%E4%B8%AA%E5%85%83%E7%B4%A0-%E8%BF%94%E5%9B%9E%E5%B8%83%E5%B0%94"><span class="toc-number">2.2.8.</span> <span class="toc-text">ES7 includes() 查找数组是否包含某个元素 返回布尔</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%9A%84%E9%81%8D%E5%8E%86%E6%96%B9%E6%B3%95%EF%BC%8812%E4%B8%AA%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">数组的遍历方法（12个）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#forEach"><span class="toc-number">3.1.</span> <span class="toc-text">forEach</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#every-%E6%A3%80%E6%B5%8B%E6%95%B0%E7%BB%84%E6%89%80%E6%9C%89%E5%85%83%E7%B4%A0%E6%98%AF%E5%90%A6%E9%83%BD%E7%AC%A6%E5%90%88%E5%88%A4%E6%96%AD%E6%9D%A1%E4%BB%B6"><span class="toc-number">3.2.</span> <span class="toc-text">every 检测数组所有元素是否都符合判断条件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#some-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%98%AF%E5%90%A6%E6%9C%89%E6%BB%A1%E8%B6%B3%E5%88%A4%E6%96%AD%E6%9D%A1%E4%BB%B6%E7%9A%84%E5%85%83%E7%B4%A0"><span class="toc-number">3.3.</span> <span class="toc-text">some 数组中的是否有满足判断条件的元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#filter-%E8%BF%87%E6%BB%A4%E5%8E%9F%E5%A7%8B%E6%95%B0%E7%BB%84%EF%BC%8C%E8%BF%94%E5%9B%9E%E6%96%B0%E6%95%B0%E7%BB%84"><span class="toc-number">3.4.</span> <span class="toc-text">filter 过滤原始数组，返回新数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#map-%E5%AF%B9%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%AF%8F%E4%B8%AA%E5%85%83%E7%B4%A0%E8%BF%9B%E8%A1%8C%E5%A4%84%E7%90%86%EF%BC%8C%E8%BF%94%E5%9B%9E%E6%96%B0%E7%9A%84%E6%95%B0%E7%BB%84"><span class="toc-number">3.5.</span> <span class="toc-text">map 对数组中的每个元素进行处理，返回新的数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#reduce-%E4%B8%BA%E6%95%B0%E7%BB%84%E6%8F%90%E4%BE%9B%E7%B4%AF%E5%8A%A0%E5%99%A8%EF%BC%8C%E5%90%88%E5%B9%B6%E4%B8%BA%E4%B8%80%E4%B8%AA%E5%80%BC"><span class="toc-number">3.6.</span> <span class="toc-text">reduce 为数组提供累加器，合并为一个值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#reduceRight-%E4%BB%8E%E5%8F%B3%E8%87%B3%E5%B7%A6%E7%B4%AF%E5%8A%A0"><span class="toc-number">3.7.</span> <span class="toc-text">reduceRight 从右至左累加</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ES6%EF%BC%9Afind-amp-findIndex-%E6%A0%B9%E6%8D%AE%E6%9D%A1%E4%BB%B6%E6%89%BE%E5%88%B0%E6%95%B0%E7%BB%84%E6%88%90%E5%91%98"><span class="toc-number">3.8.</span> <span class="toc-text">ES6：find()&amp; findIndex() 根据条件找到数组成员</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ES6-keys-amp-values-amp-entries-%E9%81%8D%E5%8E%86%E9%94%AE%E5%90%8D%E3%80%81%E9%81%8D%E5%8E%86%E9%94%AE%E5%80%BC%E3%80%81%E9%81%8D%E5%8E%86%E9%94%AE%E5%90%8D-%E9%94%AE%E5%80%BC"><span class="toc-number">3.9.</span> <span class="toc-text">ES6 keys()&amp;values()&amp;entries() 遍历键名、遍历键值、遍历键名+键值</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD"><span class="toc-number">4.</span> <span class="toc-text">结语</span></a></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="post-block" itemscope itemtype="https://schema.org/Article"><link itemprop="mainEntityOfPage" href="https://muyuanshan.github.io/2021/05/17/%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93-md/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="沐源山"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="MYS"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">数组的方法总结.md</h1><div class="post-meta"><div class="post-time" style="display:inline-block"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-line"></use></svg></span> <time title="创建时间：2021-05-17 16:32:12" itemprop="dateCreated datePublished" datetime="2021-05-17T16:32:12+08:00">2021-05-17</time></div><div class="post-classify"><span class="post-category"> <span class="post-meta-item-icon" style="margin-right:3px;"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-line"></use></svg></span><span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category" href="/categories/%E5%89%8D%E7%AB%AF/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">前端</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag" href="/tags/js/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">js</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body" style="--smc-primary:#0078E7;"><p>在开发的过程会经常的使用到数组的方法，很容易忘记，这篇文章主要是用来加深记忆，系统的梳理出来，在忘记的时候，方便查阅</p>
+<h3 id="创建一个数组"><a href="#创建一个数组" class="headerlink" title="创建一个数组"></a>创建一个数组</h3><h4 id="1-字面量的方式：这个方式也是我们最常用的一种方式。"><a href="#1-字面量的方式：这个方式也是我们最常用的一种方式。" class="headerlink" title="1. 字面量的方式：这个方式也是我们最常用的一种方式。"></a>1. 字面量的方式：这个方式也是我们最常用的一种方式。</h4><pre><code>var a = [3, 11, 8]</code></pre>
+<h4 id="2-构造器："><a href="#2-构造器：" class="headerlink" title="2. 构造器："></a>2. 构造器：</h4><pre><code>var a = Array(); // []
+var a = Array(3); // [ , , ] 这里之所以是传入一个参数，出来的是3个空，是因为只有一个参数的时候代表的是数组的长度，也就是说这里的3是说明数组的长度是3
+var a = Array(3,11,8); // [3, 11, 8]
+// 实际上 new Array === Array, 加不加new 不影响</code></pre>
+<h4 id="3-ES6-Array-of-返回由所有参数值组成的数组"><a href="#3-ES6-Array-of-返回由所有参数值组成的数组" class="headerlink" title="3. ES6 Array.of() 返回由所有参数值组成的数组"></a>3. ES6 Array.of() 返回由所有参数值组成的数组</h4><p>定义： 返回由所有参数组成的数组，如果没有参数就返回一个空数组<br>目的： 正如上面只有一个参数的特殊情况下，因为参数的个数不全，产生了一定的差异性，这个的出现解决了这个问题。</p>
+<pre><code>let a = Array.of(3, 11, 8); // [3,11,8]
+let a = Array.of(3); // [3]</code></pre>
+<h4 id="4-ES6-Array-from-将类数组转换为真正的数组"><a href="#4-ES6-Array-from-将类数组转换为真正的数组" class="headerlink" title="4. ES6 Array.from() 将类数组转换为真正的数组"></a>4. ES6 Array.from() 将类数组转换为真正的数组</h4><p>定义：用于转换为真正的数组，不改变原对象，返回一个新的数组<br>参数：<br>第一个参数（必须）：需要转化为真正的对象。<br>第二个参数（可选）：类似数组的map的方法，对每个元素进行处理，将处理后的值放入返回的数组。<br>第三个参数（可选）：用来绑定this</p>
+<pre><code>1. 对象拥有length属性
+let obj = &#123;
+  0: &#39;a&#39;,
+  1: &#39;b&#39;,
+  2: &#39;c&#39;,
+  length: 3;
+&#125;
+let arr = Array.from(obj); // [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;];
+2.部署了 Iterator接口的数组结构 比如：字符串、Set、NodeList对象
+let arr = Array.from(&#39;hello&#39;); // [&#39;h&#39;,&#39;e&#39;,&#39;l&#39;,&#39;l&#39;,&#39;o&#39;];
+let arr = Array.from(new Set([&#39;a&#39;,&#39;b&#39;])); // [&#39;a&#39;,&#39;b&#39;]
+3. 使用了第二个参数
+const obj1 = &#123;
+  0: 1,
+  1: 2,
+  length: 2,
+&#125;;
+const arr = Array.from(obj, item =&gt; &#123;
+  return (item += 1);
+&#125;);
+console.log(arr); // [2, 3]</code></pre>
+<h3 id="数组上的方法"><a href="#数组上的方法" class="headerlink" title="数组上的方法"></a>数组上的方法</h3><p>数组的方法有很多种，在这里我分为了两种，一种是改变原数组的值，一种是不改原数组的值。</p>
+<h4 id="改变原数组的方法（9个）"><a href="#改变原数组的方法（9个）" class="headerlink" title="改变原数组的方法（9个）"></a>改变原数组的方法（9个）</h4><pre><code>let a = [1,2,3]; 
+ES5: a.splice()/ a.sort() / a.pop()/ a.shift()/ a.push()/ a.unshift()/ a.reverse() 
+ES6: a.copyWithin() / a.fill</code></pre>
+<p><strong>注意</strong>：对于这些能够改变原数组的方法，要注意避免在循环遍历找那个改变原数组的选项，比如：改变原数组的长度，导致遍历的长度出现问题。</p>
+<h5 id="splice-添加-删除数组元素"><a href="#splice-添加-删除数组元素" class="headerlink" title="splice() 添加/删除数组元素"></a>splice() 添加/删除数组元素</h5><p>定义：splice()方法从数组添加/删除项目后，返回被删除的项目<br>语法：</p>
+<pre><code>array.splice(index,howmany,item1,.....,itemX)</code></pre>
+<p>参数：</p>
+<pre><code>1.index: 必需。整数，规定添加/删除项目的位置，使用负数可从数组结尾出规定位置。
+2.howmany：可选。要删除的项目数量。如果设置为0，则不会删除项目。
+3. item1,...,itemX: 可选，向数组添加新项目。
+返回值：如果有元素被删除，返回包含被删除项目的新数组。</code></pre>
+<p>eg1:删除元素</p>
+<pre><code>let a = [1, 2, 3, 4, 5, 6, 7]; 
+let item = a.splice(0, 3); // [1,2,3] 
+console.log(a); // [4,5,6,7] 
+// 从数组下标0开始，删除3个元素 
+let item = a.splice(-1, 3); // [7] 
+// 从最后一个元素开始删除3个元素，因为最后一个元素，所以只删除了7</code></pre>
+<p>eg2: 删除并添加</p>
+<pre><code>let a = [1, 2, 3, 4, 5, 6, 7]; 
+let item = a.splice(0,3,&#39;添加&#39;); // [1,2,3] 
+console.log(a); // [&#39;添加&#39;,4,5,6,7] 
+// 从数组下标0开始，删除3个元素，并添加元素&#39;添加&#39; 
+let b = [1, 2, 3, 4, 5, 6, 7]; 
+let item = b.splice(-2,3,&#39;添加1&#39;,&#39;添加2&#39;); // [6,7] 
+console.log(b); 
+// [1,2,3,4,5,&#39;添加1&#39;,&#39;添加2&#39;]
+// 从数组最后第二个元素开始，删除3个元素，并添加两个元素&#39;添加1&#39;、&#39;添加2&#39;</code></pre>
+<p>eg3: 不删除只添加:</p>
+<pre><code>let a = [1, 2, 3, 4, 5, 6, 7];
+let item = a.splice(0,0,&#39;添加1&#39;,&#39;添加2&#39;); // [] 没有删除元素，返回空数组
+console.log(a); // [&#39;添加1&#39;,&#39;添加2&#39;,1,2,3,4,5,6,7]
+let b = [1, 2, 3, 4, 5, 6, 7];
+let item = b.splice(-1,0,&#39;添加1&#39;,&#39;添加2&#39;); // [] 没有删除元素，返回空数组
+console.log(b); // [1,2,3,4,5,6,&#39;添加1&#39;,&#39;添加2&#39;,7] 在最后一个元素的前面添加两个元素</code></pre>
+<p>数组如果元素不够,会删除到最后一个为止，操作的元素，包含开始的那个元素，不含结束的那个元素，添加的是可以添加多个元素，并且添加的时候是在开始的那个元素的前面添加的。</p>
+<h5 id="sort-数组排序"><a href="#sort-数组排序" class="headerlink" title="sort() 数组排序"></a>sort() 数组排序</h5><p>定义： 对数组元素进行排序，并且返回排序后的数组。<br>sort的比较函数有两个默认参数，要在函数中接收这两个参数，这两个参数是数组中两个需要比较的元素，通常会是使用a和b接收两个将要比较的元素：</p>
+<ol>
+<li>若比较函数返回值&lt;0，那么a将排到b的前面</li>
+<li>若比较函数返回值=0，那么a和b的位置不变</li>
+<li>若比较函数返回值&gt;0，那么b将排到a的前面</li>
+</ol>
+<h5 id="pop-删除一个数组中的最后的一个元素"><a href="#pop-删除一个数组中的最后的一个元素" class="headerlink" title="pop() 删除一个数组中的最后的一个元素"></a>pop() 删除一个数组中的最后的一个元素</h5><p>定义: pop() 方法删除一个数组中的最后的一个元素，并且返回这个元素。</p>
+<h5 id="shift-删除数组的第一个元素"><a href="#shift-删除数组的第一个元素" class="headerlink" title="shift() 删除数组的第一个元素"></a>shift() 删除数组的第一个元素</h5><p>定义: shift()方法删除数组的第一个元素，并返回这个元素。</p>
+<h5 id="push-向数组的末尾添加元素"><a href="#push-向数组的末尾添加元素" class="headerlink" title="push() 向数组的末尾添加元素"></a>push() 向数组的末尾添加元素</h5><p>定义：push() 方法可向数组的末尾添加一个或多个元素，并返回新的长度。<br>参数: item1, item2, …, itemX ,要添加到数组末尾的元素</p>
+<h5 id="unshift"><a href="#unshift" class="headerlink" title="unshift()"></a>unshift()</h5><p>定义：unshift() 方法可向数组的开头添加一个或更多元素，并返回新的长度。<br>参数: item1, item2, …, itemX ,要添加到数组开头的元素</p>
+<h5 id="reverse-颠倒数组中元素的顺序"><a href="#reverse-颠倒数组中元素的顺序" class="headerlink" title="reverse() 颠倒数组中元素的顺序"></a>reverse() 颠倒数组中元素的顺序</h5><p>定义: reverse() 方法用于颠倒数组中元素的顺序。</p>
+<h5 id="ES6-copyWithin-指定位置的成员复制到其他位置"><a href="#ES6-copyWithin-指定位置的成员复制到其他位置" class="headerlink" title="ES6: copyWithin() 指定位置的成员复制到其他位置"></a>ES6: copyWithin() 指定位置的成员复制到其他位置</h5><p>定义：在当期数组内部，将指定位置的成员复制到其他位置，并返回这个数组。<br>语法：array.copyWithin(target, start = 0, end = this.length)</p>
+<ul>
+<li>target: 目标位置-从这个位置开始替换数据</li>
+<li>start: 从这个位置开始复制数据</li>
+<li>end：在这个位置前停止复制数据<br>如果参数值为负，则将其与数组的长度相加，如果end小于等于start，则不会发生复制。</li>
+<li>返回值：修改后的数组<br>简而言之就是，第一个参数是要替换的位置，第二参数和第三个参数确定复制的范围，从第一个参数开始替换，数组的长度不会变化，有几个元素，就替换几个元素<br>举个🌰：</li>
+</ul>
+<pre><code>// -2相当于3号位，-1相当于4号位 
+[1, 2, 3, 4, 5].copyWithin(0, -2, -1) // [4, 2, 3, 4, 5] 
+var a=[&#39;OB1&#39;,&#39;Koro1&#39;,&#39;OB2&#39;,&#39;Koro2&#39;,&#39;OB3&#39;,&#39;Koro3&#39;,&#39;OB4&#39;,&#39;Koro4&#39;,&#39;OB5&#39;,&#39;Koro5&#39;] 
+// 2位置开始被替换,3位置开始读取要替换的 5位置前面停止替换
+a.copyWithin(2,3,5) // [&quot;OB1&quot;,&quot;Koro1&quot;,&quot;Koro2&quot;,&quot;OB3&quot;,&quot;OB3&quot;,&quot;Koro3&quot;,&quot;OB4&quot;,&quot;Koro4&quot;,&quot;OB5&quot;,&quot;Koro5&quot;]</code></pre>
+<h5 id="ES6-fill-填充数组"><a href="#ES6-fill-填充数组" class="headerlink" title="ES6: fill() 填充数组"></a>ES6: fill() 填充数组</h5><p>定义： 使用给定值，填充一个数组。<br>参数：</p>
+<ul>
+<li>第一个参数（必须）：要填充数组的值</li>
+<li>第二个参数（可选）：填充的开始的位置，默认值为0</li>
+<li>第三个参数（可选）：填充的结束位置，默认是数组的<code>length</code></li>
+</ul>
+<pre><code>const arr = [1, 2, 3, 4, 5, 6, 7];
+console.log(arr.fill(88, 3, 7)); // (7) [1, 2, 3, 88, 88, 88, 88]</code></pre>
+<p>第一参数是要填充的内容，第二个参数是从哪里开始填，第三个参数是填到哪里，这个方法是不会改变数组的长度的。</p>
+<h4 id="不改变原数组的方法-8个"><a href="#不改变原数组的方法-8个" class="headerlink" title="不改变原数组的方法(8个):"></a>不改变原数组的方法(8个):</h4><pre><code>ES5：
+slice、join、toLocateString、toStrigin、cancat、indexOf、lastIndexOf、
+ES7：
+includes</code></pre>
+<h5 id="slice-浅拷贝数组的元素"><a href="#slice-浅拷贝数组的元素" class="headerlink" title="slice() 浅拷贝数组的元素"></a>slice() 浅拷贝数组的元素</h5><p>定义：方法返回一个开始到结束（不包括结束）选择的数组的一部分<strong>浅拷贝</strong>到一个新的数组对象，且原数组不会被修改。<br><strong>注意</strong>：字符串也有一个slice的方法，不要混淆<br>语法：array.slice(begin, end);<br>参数：<br>begin: 索引数值，接收负值，从该索引处开始提取原数组中的元素，默认值为0。<br>end: 索引数值（不包含），接收负值，在改索引出前结束提取原数组元素默认值为数组末尾（包括最后一个元素）。</p>
+<pre><code>let a= [&#39;hello&#39;,&#39;world&#39;]; 
+let b=a.slice(0,1); // [&#39;hello&#39;] 
+a[0]=&#39;改变原数组&#39;; 
+console.log(a,b); // [&#39;改变原数组&#39;,&#39;world&#39;] [&#39;hello&#39;] 
+b[0]=&#39;改变拷贝的数组&#39;; 
+console.log(a,b); // [&#39;改变原数组&#39;,&#39;world&#39;] [&#39;改变拷贝的数组&#39;]</code></pre>
+<p>如上所示，<strong>新数组是浅拷贝</strong>的，元素是简单数据类型，改变之后互相不干扰，但是如果是<strong>复杂的数组类型</strong>的话，改变其中一个，<strong>另外一个也会改变</strong>。</p>
+<h5 id="join-数组转字符串"><a href="#join-数组转字符串" class="headerlink" title="join() 数组转字符串"></a>join() 数组转字符串</h5><p>定义：join()方法用于把数组中的所有元素通过指定的分隔符进行放入一个字符串，返回生成的字符串。<br>语法： array.jion(str)<br>参数：str(可选)，指定的要使用的分隔符，默认使用逗号作为分隔符。</p>
+<pre><code>let a= [&#39;hello&#39;,&#39;world&#39;];
+let str=a.join(); // &#39;hello,world&#39;
+let str2=a.join(&#39;+&#39;); // &#39;hello+world&#39;</code></pre>
+<p>使用join方法或者下文说到的toString方法时，当数组中的元素也是数组或者是对象时会出现什么情况？</p>
+<pre><code>let a= [[&#39;OBKoro1&#39;,&#39;23&#39;],&#39;test&#39;];
+let str1=a.join(); // OBKoro1,23,test
+let b= [&#123;name:&#39;OBKoro1&#39;,age:&#39;23&#39;&#125;,&#39;test&#39;];
+let str2 = b.join(); // [object Object],test
+// 对象转字符串推荐JSON.stringify(obj);</code></pre>
+<p>复制代码</p>
+<p> 所以，<code>join()/toString()</code>方法在数组元素是数组的时候，会将里面的数组也<code>调用join()/toString()</code>,如果是对象的话，对象会被转为<code>[object Object]</code>字符串。</p>
+<h5 id="toLocaleString-数组转字符串"><a href="#toLocaleString-数组转字符串" class="headerlink" title="toLocaleString() 数组转字符串"></a>toLocaleString() 数组转字符串</h5><p>定义：返回一个表示数组元素的字符串，改字符串由数组中的每个元素的toLocaleString() 返回值经调用jion()方法连接（由逗号隔开）组成。<br>语法：array.toLoacleString();</p>
+<pre><code>let a=[&#123;name:&#39;OBKoro1&#39;&#125;,23,&#39;abcd&#39;,new Date()];
+let str=a.toLocaleString(); // [object Object],23,abcd,2018/5/28 下午1:52:20 </code></pre>
+<p>如上述栗子：调用数组的<code>toLocaleString</code>方法，数组中的每个元素都会调用自身的<code>toLocaleString</code>方法，对象调用对象的<code>toLocaleString</code>,<code>Date</code>调用<code>Date</code>的<code>toLocaleString</code>。</p>
+<h5 id="toString-数组转字符串-不推荐"><a href="#toString-数组转字符串-不推荐" class="headerlink" title="toString() 数组转字符串 不推荐"></a>toString() 数组转字符串 不推荐</h5><p>定义: toString() 方法可把数组转换为由逗号链接起来的字符串。<br>语法：array.toString()<br>该方法的效果和join方法一样，都是用于数组转字符串的，但是与join方法相比没有优势，也不能自定义字符串的分隔符，因此不推荐使用。<br><strong>值得注意的是</strong>：当数组和字符串操作的时候，js 会调用这个方法将数组自动转换成字符串</p>
+<p>   let b= [ ‘toString’,’演示’].toString(); // toString,演示<br>   let a= [‘调用toString’,’连接在我后面’]+’啦啦啦’; // 调用toString,连接在我后面啦啦啦</p>
+<h5 id="cancat"><a href="#cancat" class="headerlink" title="cancat"></a>cancat</h5><p>定义： 方法用于合并两个或多个数组，返回一个新数组。<br>语法： var newArr = oldArray.concat(arrayX,arrayX,……,arrayX)；</p>
+<p>参数：该参数可以是具体的值，也可以是数组对象。可以是任意多个。<br>eg1:</p>
+<pre><code>let a = [1, 2, 3];
+let b = [4, 5, 6];
+//连接两个数组
+let newVal=a.concat(b); // [1,2,3,4,5,6]
+// 连接三个数组
+let c = [7, 8, 9]
+let newVal2 = a.concat(b, c); // [1,2,3,4,5,6,7,8,9]
+// 添加元素
+let newVal3 = a.concat(&#39;添加元素&#39;,b, c,&#39;再加一个&#39;); 
+// [1,2,3,&quot;添加元素&quot;,4,5,6,7,8,9,&quot;再加一个&quot;]</code></pre>
+<p>   // 合并嵌套数组  会浅拷贝嵌套数组<br>   let d = [1,2 ];<br>   let f = [3,[4]];<br>   let newVal4 = d.concat(f); // [1,2,3,[4]]</p>
+<h5 id="indexOf-查找数组是否存在某个元素，返回下标"><a href="#indexOf-查找数组是否存在某个元素，返回下标" class="headerlink" title="indexOf() 查找数组是否存在某个元素，返回下标"></a>indexOf() 查找数组是否存在某个元素，返回下标</h5><p>定义：返回在数组中可以找到一个给定元素的第一个索引，如果不存在返回-1。<br>语法：array.indexOf(searchElement,fromIndex)<br>参数：<br>第一个参数指的是，被查找的元素，第二个参数是开始查找的位置，接收负值，默认值是0<br><strong>需要注意的是</strong>在查找的过程中，是严格相等的搜索，和字符串的方法是不一样的。<code>===</code>严格相等对的搜索，即<strong>数组元素要完全匹配</strong>才能搜索成功。<br>并且indexOf()<strong>不能</strong>识别<code>NaN</code><br>eg:</p>
+<pre><code>let a=[&#39;啦啦&#39;,2,4,24,NaN]
+console.log(a.indexOf(&#39;啦&#39;));  // -1 
+console.log(a.indexOf(&#39;NaN&#39;));  // -1 
+console.log(a.indexOf(&#39;啦啦&#39;)); // 0</code></pre>
+<h5 id="lastIndexOf-查找指定元素在数组中的最后一个位置"><a href="#lastIndexOf-查找指定元素在数组中的最后一个位置" class="headerlink" title="lastIndexOf() 查找指定元素在数组中的最后一个位置"></a>lastIndexOf() 查找指定元素在数组中的最后一个位置</h5><p>定义： 方法返回指定元素,在数组中的最后一个的索引，如果不存在则返回 -1。（从数组后面往前查找）<br>语法：arr.lastIndexOf(searchElement,fromIndex)<br>参数：<br>searchElement(必须): 被查找的元素<br>fromIndex(可选): 逆向查找开始位置，默认值数组的长度-1，即查找整个数组。<br>关于fromIndex有三个规则：</p>
+<ol>
+<li>正值。如果该值大于或等于数组的长度，则整个数组会被查找。</li>
+<li>负值。将其视为从数组末尾向前偏移。（比如：-2，从数组最后的第二个元素开始往前找）负值的绝对值大于数组长度，则方法返回-1，级数组不会被查找。</li>
+</ol>
+<p>此方法和上一个方法一样都是查找最近的一个值。</p>
+<pre><code>let a=[&#39;OB&#39;,4,&#39;Koro1&#39;,1,2,&#39;Koro1&#39;,3,4,5,&#39;Koro1&#39;]; // 数组长度为10
+// let b=a.lastIndexOf(&#39;Koro1&#39;,4); // 从下标4开始往前找 返回下标2
+// let b=a.lastIndexOf(&#39;Koro1&#39;,100); //  大于或数组的长度 查找整个数组 返回9
+// let b=a.lastIndexOf(&#39;Koro1&#39;,-11); // -1 数组不会被查找
+let b=a.lastIndexOf(&#39;Koro1&#39;,-9); // 从第二个元素4往前查找，没有找到 返回-1</code></pre>
+<h5 id="ES7-includes-查找数组是否包含某个元素-返回布尔"><a href="#ES7-includes-查找数组是否包含某个元素-返回布尔" class="headerlink" title="ES7 includes() 查找数组是否包含某个元素 返回布尔"></a>ES7 includes() 查找数组是否包含某个元素 返回布尔</h5><p>定义：返回一个布尔值，标识某个数组是否包含给定的值<br>语法：array.includes(searchElement,fromIndex=0)<br>参数：<br>searchElement(必须):被查找的元素<br>fromIndex(可选):默认值为0，参数表示搜索的起始位置，接受负值。正值超过数组长度，数组不会被搜索，返回false。负值绝对值超过数组的长度，重置为0开始搜索。<br><strong>includes方法是为了弥补indexOf方法的缺陷而出现的：</strong></p>
+<ol>
+<li>indexOf不能识别<code>NaN</code>,这个可以。</li>
+<li>indexOf方法检查是否包含某个值不够语义化，需要判断是否等于-1，表达不够直观。<br>eg：</li>
+</ol>
+<pre><code>let a=[&#39;OB&#39;,&#39;Koro1&#39;,1,NaN];
+// let b=a.includes(NaN); // true 识别NaN
+// let b=a.includes(&#39;Koro1&#39;,100); // false 超过数组长度 不搜索
+// let b=a.includes(&#39;Koro1&#39;,-3);  // true 从倒数第三个元素开始搜索 
+// let b=a.includes(&#39;Koro1&#39;,-100);  // true 负值绝对值超过数组长度，搜索整个数组</code></pre>
+<h3 id="数组的遍历方法（12个）"><a href="#数组的遍历方法（12个）" class="headerlink" title="数组的遍历方法（12个）"></a>数组的遍历方法（12个）</h3><p>数组上共有12个遍历的方法</p>
+<pre><code>ES5：
+forEach、every 、some、 filter、map、reduce、reduceRight、
+ES6：
+find、findIndex、keys、values、entries</code></pre>
+<p>关于数组的遍历，这里有一个数组遍历的效率的<a target="_blank" rel="noopener" href="http://louiszhai.github.io/2015/12/18/traverse/#%E6%B5%8B%E8%AF%95%E5%90%84%E6%96%B9%E6%B3%95%E6%95%88%E7%8E%87">分析</a></p>
+<p>关于遍历注意以下两点：</p>
+<ul>
+<li>尽量不要在遍历的时候，修改后面要遍历的值</li>
+<li>尽量不要在遍历的时候修改数组的长度（删除/添加）</li>
+</ul>
+<h4 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h4><p>定义： 按升序为数组中含有有效值的每一项执行一次回调函数。<br>语法：array.forEach(function(currentValue, index, arr), thisValue)<br>参数：<br>function（必须）：数组中每个元素需要调用的函数。</p>
+<pre><code>// 回调函数的参数
+1.currentvalue（必须），数组当前元素的值
+2.index（可选），当前元素的索引值
+3.arr（可选），数组本身</code></pre>
+<p>thisValue:当执行回调函数是this绑定对象的值，默认值是<code>undefined</code></p>
+<p><strong>注意点</strong></p>
+<ol>
+<li>无法中途退出循环，只能用<code>return</code>退出本次回调，进入下一次回调</li>
+<li>他总是返回一个<code>undefined</code>值，即使return了一个值</li>
+</ol>
+<p>在下面即将介绍的类似语法同样适用下面这些规则</p>
+<ul>
+<li>对于空数组是不会执行回调函数的</li>
+<li>对于已在迭代过程中删除的元素，或者空元素会跳过回调函数</li>
+<li>遍历次数在第一次循环的前就已经确定的，再添加到数组中的元素不会遍历</li>
+<li>如果已经存在的值被改变，则传递给callback的值是遍历到他们那一刻的值</li>
+</ul>
+<h4 id="every-检测数组所有元素是否都符合判断条件"><a href="#every-检测数组所有元素是否都符合判断条件" class="headerlink" title="every 检测数组所有元素是否都符合判断条件"></a>every 检测数组所有元素是否都符合判断条件</h4><p>定义: 方法用于检测数组所有元素是否都符合函数定义的条件<br>语法：array.every(function(currentValue, index, arr), thisValue)</p>
+<p>参数：<br>function（必须）：数组中每个元素需要调用的函数。</p>
+<pre><code>// 回调函数的参数
+1.currentvalue（必须），数组当前元素的值
+2.index（可选），当前元素的索引值
+3.arr（可选），数组本身</code></pre>
+<p>thisValue:当执行回调函数是this绑定对象的值，默认值是<code>undefined</code></p>
+<p>方法返回值规则：</p>
+<ol>
+<li>如果数组中检测到有一个元素不满足，则整个表达式返回false，且剩余的元素不会再进行检测。</li>
+<li>如果所有元素都满嘴条件，则返回true。</li>
+</ol>
+<p>eg：</p>
+<pre><code>function isBigEnough(element, index, array) &#123; 
+  return element &gt;= 10; // 判断数组中的所有元素是否都大于10
+&#125;
+let result = [12, 5, 8, 130, 44].every(isBigEnough);   // false
+let result = [12, 54, 18, 130, 44].every(isBigEnough); // true
+// 接受箭头函数写法 
+[12, 5, 8, 130, 44].every(x =&gt; x &gt;= 10); // false
+[12, 54, 18, 130, 44].every(x =&gt; x &gt;= 10); // true</code></pre>
+<h4 id="some-数组中的是否有满足判断条件的元素"><a href="#some-数组中的是否有满足判断条件的元素" class="headerlink" title="some 数组中的是否有满足判断条件的元素"></a>some 数组中的是否有满足判断条件的元素</h4><p>定义：数组中的是否有满足判断条件的元素<br>语法： array.some(function(currentValue, index, arr), thisValue)</p>
+<p>参数：<br>function（必须）：数组中每个元素需要调用的函数。</p>
+<pre><code>// 回调函数的参数
+1.currentvalue（必须），数组当前元素的值
+2.index（可选），当前元素的索引值
+3.arr（可选），数组本身</code></pre>
+<p>thisValue:当执行回调函数是this绑定对象的值，默认值是<code>undefined</code></p>
+<p>方发返回值规则：<br>如果有一个元素满足条件，则表达式返回true，剩余的元素不会再执行检测。<br>如果没有满足条件的元素，则返回false。</p>
+<pre><code>function isBigEnough(element, index, array) &#123;
+  return (element &gt;= 10); //数组中是否有一个元素大于 10
+&#125;
+let result = [2, 5, 8, 1, 4].some(isBigEnough); // false
+let result = [12, 5, 8, 1, 4].some(isBigEnough); // true</code></pre>
+<h4 id="filter-过滤原始数组，返回新数组"><a href="#filter-过滤原始数组，返回新数组" class="headerlink" title="filter 过滤原始数组，返回新数组"></a>filter 过滤原始数组，返回新数组</h4><p>定义: 返回一个新数组, 其包含通过所提供函数实现的测试的所有元素。<br>语法：let new_array = arr.filter(function(currentValue, index, arr), thisArg)</p>
+<p>参数：<br>function（必须）：数组中每个元素需要调用的函数。</p>
+<pre><code>// 回调函数的参数
+1.currentvalue（必须），数组当前元素的值
+2.index（可选），当前元素的索引值
+3.arr（可选），数组本身</code></pre>
+<p>thisValue:当执行回调函数是this绑定对象的值，默认值是<code>undefined</code></p>
+<p>eg：</p>
+<pre><code> let a = [32, 33, 16, 40];
+let result = a.filter(function (value, index, array) &#123;
+  return value &gt;= 18; // 返回a数组中所有大于18的元素
+&#125;);
+console.log(result,a);// [32,33,40] [32,33,16,40]</code></pre>
+<h4 id="map-对数组中的每个元素进行处理，返回新的数组"><a href="#map-对数组中的每个元素进行处理，返回新的数组" class="headerlink" title="map 对数组中的每个元素进行处理，返回新的数组"></a>map 对数组中的每个元素进行处理，返回新的数组</h4><p>定义：创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果。<br>语法：let new_array = arr.map(function(currentValue, index, arr), thisArg)<br>参数：<br>function（必须）：数组中每个元素需要调用的函数。</p>
+<pre><code>// 回调函数的参数
+1.currentvalue（必须），数组当前元素的值
+2.index（可选），当前元素的索引值
+3.arr（可选），数组本身</code></pre>
+<p>thisValue:当执行回调函数是this绑定对象的值，默认值是<code>undefined</code><br>eg:</p>
+<pre><code>let a = [&#39;1&#39;,&#39;2&#39;,&#39;3&#39;,&#39;4&#39;];
+let result = a.map(function (value, index, array) &#123;
+  return value + &#39;新数组的新元素&#39;
+&#125;);
+console.log(result, a); 
+// [&quot;1新数组的新元素&quot;,&quot;2新数组的新元素&quot;,&quot;3新数组的新元素&quot;,&quot;4新数组的新元素&quot;] [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;]</code></pre>
+<h4 id="reduce-为数组提供累加器，合并为一个值"><a href="#reduce-为数组提供累加器，合并为一个值" class="headerlink" title="reduce 为数组提供累加器，合并为一个值"></a>reduce 为数组提供累加器，合并为一个值</h4><p>定义：reduce方法对累加器和数组中每个元素（从做到右）应用一个函数，最终合并成一个值。<br>语法：array.reduce(function(pre,currentValue, currentIndex, arr), initialValue)<br>参数：<br>function（必须）: 数组中每个函数需要调用的参数。</p>
+<pre><code>1. pre（必须）初始值，或者上一次调用回调函数的返回值
+2. currentValue，数组的当前值
+3. index，当前元素的索引值
+4. 数组对象本身
+5. initialValue：指定第一次回调的第一个参数</code></pre>
+<p><strong>注意回调第一次执行时</strong></p>
+<ol>
+<li>如果initialValue在调用reduce是被提供，那么第一个pre将等于initialValue，此时currentValue等于数组中的第一个值</li>
+<li>如果initialValue在调用reduce是未被提供，那么pre就等于第一个值，currentValue等于数组中的第二个值，此时如果数组是空数组就会报错。</li>
+<li>如果数组仅有一个元素，并且没有提供initialVal，或者提供了initialVal但是数组为空，回调不会执行，数组的唯一值将被返回<br>eg：</li>
+</ol>
+<pre><code>// 数组求和 
+let sum = [0, 1, 2, 3].reduce(function (a, b) &#123;
+  return a + b;
+&#125;, 0);
+// 6
+// 将二维数组转化为一维 将数组元素展开
+let flattened = [[0, 1], [2, 3], [4, 5]].reduce(
+  (a, b) =&gt; a.concat(b),
+  []
+);
+ // [0, 1, 2, 3, 4, 5]</code></pre>
+<h4 id="reduceRight-从右至左累加"><a href="#reduceRight-从右至左累加" class="headerlink" title="reduceRight 从右至左累加"></a>reduceRight 从右至左累加</h4><p>这个方法除了与reduce执行方向相反外，其他完全与其一致，请参考上述 reduce 方法介绍。</p>
+<h4 id="ES6：find-amp-findIndex-根据条件找到数组成员"><a href="#ES6：find-amp-findIndex-根据条件找到数组成员" class="headerlink" title="ES6：find()&amp; findIndex() 根据条件找到数组成员"></a>ES6：find()&amp; findIndex() 根据条件找到数组成员</h4><p>find()定义：用于找出第一个符合条件的数组成员，并返回该成员，如果没有符合条件的成员，则返回undefined。<br>findIndex()定义：返回第一个符合条件的数组成员的位置，如果所有成员都不符合条件，则返回-1。<br>语法：<br>let new_array = arr.find(function(currentValue, index, arr), thisArg)</p>
+<p>let new_array = arr.findIndex(function(currentValue, index, arr), thisArg)</p>
+<p>参数：<br>function（必须）：数组中每个元素需要调用的函数。</p>
+<pre><code>// 回调函数的参数
+1.currentvalue（必须），数组当前元素的值
+2.index（可选），当前元素的索引值
+3.arr（可选），数组本身</code></pre>
+<p>thisValue:当执行回调函数是this绑定对象的值，默认值是<code>undefined</code><br>eg：</p>
+<pre><code>// find
+let a = [1, 4, -5, 10].find((n) =&gt; n &lt; 0); // 返回元素-5
+let b = [1, 4, -5, 10,NaN].find((n) =&gt; Object.is(NaN, n));  // 返回元素NaN
+// findIndex
+let a = [1, 4, -5, 10].findIndex((n) =&gt; n &lt; 0); // 返回索引2
+let b = [1, 4, -5, 10,NaN].findIndex((n) =&gt; Object.is(NaN, n));  // 返回索引4</code></pre>
+<h4 id="ES6-keys-amp-values-amp-entries-遍历键名、遍历键值、遍历键名-键值"><a href="#ES6-keys-amp-values-amp-entries-遍历键名、遍历键值、遍历键名-键值" class="headerlink" title="ES6 keys()&amp;values()&amp;entries() 遍历键名、遍历键值、遍历键名+键值"></a>ES6 keys()&amp;values()&amp;entries() 遍历键名、遍历键值、遍历键名+键值</h4><p>定义：<br>三个方法都返回一个新的 Array Iterator 对象，对象根据方法不同包含不同的值<br>语法：<br>array.keys()<br>array.values()<br>array.entries()</p>
+<pre><code>array.keys()
+array.values()
+array.entries()
+for (let index of [&#39;a&#39;, &#39;b&#39;].keys()) &#123;
+  console.log(index);
+&#125;
+// 0
+// 1
+
+for (let elem of [&#39;a&#39;, &#39;b&#39;].values()) &#123;
+  console.log(elem);
+&#125;
+// &#39;a&#39;
+// &#39;b&#39;
+
+for (let [index, elem] of [&#39;a&#39;, &#39;b&#39;].entries()) &#123;
+  console.log(index, elem);
+&#125;
+// 0 &quot;a&quot;
+// 1 &quot;b&quot;</code></pre>
+<p>在for..of中如果遍历中途要退出，可以使用break退出循环。</p>
+<p>如果不使用for…of循环，可以手动调用遍历器对象的next方法，进行遍历:</p>
+<pre><code>let letter = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;];
+let entries = letter.entries();
+console.log(entries.next().value); // [0, &#39;a&#39;]
+console.log(entries.next().value); // [1, &#39;b&#39;]
+console.log(entries.next().value); // [2, &#39;c&#39;]</code></pre>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>总结涵盖了大部分的数组的方法，如果还有其他的方法，后续接着更新。这篇文章就到这里了。如果有什么不对的地方，还望斧正。</p>
+</div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>沐源山</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="https://muyuanshan.github.io/2021/05/17/%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93-md/" title="数组的方法总结.md">https://muyuanshan.github.io/2021/05/17/%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93-md/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><svg class="icon"><use xlink:href="#icon-creative-commons-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-by-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-nc-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-sa-line"></use></svg></a> 许可协议。</li></ul></section></article><div class="post-nav"><div class="post-nav-item"></div><div class="post-nav-item"><a class="post-nav-next" href="/2021/04/12/%E9%97%AD%E5%8C%85-md/" rel="next" title="闭包.md"><span class="post-nav-text">闭包.md</span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-right-s-line"></use></svg></a></div></div></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2021 </span><span class="with-love" id="animate"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-cloud-line"></use></svg></span><span class="author"> 沐源山</span></div><div class="powered"><span>由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v5.3.0</span><span class="footer-separator">|</span><span>主题 - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v1.3.0</span></div></footer><a class="hty-icon-button" id="goUp" aria-label="back-to-top" href="#"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-up-s-line"></use></svg><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#0078E7" stroke-width="2" stroke-linecap="round"></circle></svg></a></div><script defer src="/js/utils.js"></script><script defer src="/js/hexo-theme-yun.js"></script></body></html>
